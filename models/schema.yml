@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: cc_sales_products
+    columns:
+      ### PK ###
+      - name: qty_91
+        tests:
+          - not_null
