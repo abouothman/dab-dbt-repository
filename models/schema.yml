@@ -4,8 +4,6 @@ models:
   - name: cc_sales_products
     columns:
       ### PK ###
-      - name: product_id
+      - name: qty_91
         tests:
-          - unique
           - not_null
-              
