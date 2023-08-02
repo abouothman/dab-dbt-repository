@@ -1,7 +1,13 @@
+{{
+  config(
+    materialized='table'
+  )
+}}
+
 WITH cc_sales_products AS (
     SELECT * FROM {{ ref('cc_sales_products') }}
   ),
-stg_cc_stock AS (
+    stg_cc_stock AS (
   SELECT
     ### Key ###
     CONCAT(model,"_",color,"_",IFNULL(size,"no-size")) AS product_id
@@ -20,7 +26,7 @@ stg_cc_stock AS (
     ,stock
     -- value
     ,price
-  FROM `raw_data_circle.raw_cc_stock` t
+  FROM raw_data_circle.raw_cc_stock t
 )
 SELECT
   ### Key ###
@@ -58,4 +64,4 @@ SELECT
 FROM stg_cc_stock t
 LEFT JOIN cc_sales_products d USING (product_id)
 WHERE TRUE
-ORDER BY product_id
+ORDER BY product_id 
